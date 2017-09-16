@@ -1,0 +1,16 @@
+[attr]omsi text eol=crlf working-tree-encoding=MS-EE encoding=MS-EE
+
+* eol=lf working-tree-encoding=UTF-8 encoding=UTF-8
+
+# OMSI Script files
+*_script*.osc omsi
+*_varlist*.txt omsi
+*_stringvarlist*.txt omsi
+*_constfile*.txt omsi
+
+# Git files
+.gitattributes text
+.gitignore text
+/README.md text
+/LICENSE.txt text
+/Makefile text
