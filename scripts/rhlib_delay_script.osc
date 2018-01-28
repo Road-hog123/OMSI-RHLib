@@ -1,0 +1,42 @@
+'###############################################################################
+' Variables associated with delay and digital delay clocks
+
+' Version 0.1
+' Written from scratch with <3 by Road-hog123
+
+' For usage information, please see:
+'   https://github.com/Road-hog123/OMSI-RHLib/
+
+' Encoding: Windows-1252, EOL: CRLF, Indent & Align: Space, Wrap: 80 columns
+'###############################################################################
+
+' Copyright 2020 Nathan Burnham
+
+' Licensed under the Apache License, Version 2.0 (the "License");
+' you may not use this file except in compliance with the License.
+' You may obtain a copy of the License at
+
+'   http://www.apache.org/licenses/LICENSE-2.0
+
+' Unless required by applicable law or agreed to in writing, software
+' distributed under the License is distributed on an "AS IS" BASIS,
+' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+' See the License for the specific language governing permissions and
+' limitations under the License.
+
+'###############################################################################
+
+{macro:rhlib_delay_frame}
+    (L.L.rhlib_time_updated) (L.L.rhlib_tt_updated) ||
+    {if}
+        (L.L.rhlib_delay)
+        (M.V.GetTTDelay) trunc (S.L.rhlib_delay)
+        = ! (S.L.rhlib_delay_updated)
+        {if}
+            (L.L.rhlib_delay) abs
+            60 / d trunc (S.L.rhlib_delay_minute)
+            - 60 * (S.L.rhlib_delay_second)
+            (L.L.rhlib_delay) sign (S.L.rhlib_delay_direction)
+        {endif}
+    {endif}
+{end}

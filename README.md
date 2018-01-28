@@ -154,3 +154,27 @@ written to.
   `rhlib_tt_stopped` are 1 during any frame in which the value of
   `rhlib_tt_index` changed, with the latter indicating the nature of the change,
   0 otherwise.
+
+### Delay
+
+To use this module:
+
+- Time and Timetable modules must be active.
+- `rhlib_delay_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_delay_script.osc` must be listed under `[script]`.
+- `rhlib_delay_frame` must be called from both the `{frame}` and `{frame_ai}`
+  entrypoints (if the latter exists).
+
+The variables provided by this module should be considered constants and not be
+written to.
+
+`rhlib_delay`
+: The delay against the timetable in whole seconds (`(M.V.GetTTDelay)` rounded
+  towards zero).
+
+`rhlib_delay_updated`
+: 1 during any frame in which the value of `rhlib_delay` changed, 0 otherwise.
+
+`rhlib_delay_direction`, `rhlib_delay_minute` and `rhlib_delay_second`
+: The +/- indicator, minutes and seconds components of a digital clock display
+  for the timetable delay.
