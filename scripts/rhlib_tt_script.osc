@@ -1,0 +1,45 @@
+'###############################################################################
+' Variables associated with the timetable and bus stop index
+
+' Version 0.1
+' Written from scratch with <3 by Road-hog123
+
+' For usage information, please see:
+'   https://github.com/Road-hog123/OMSI-RHLib/
+
+' Encoding: Windows-1252, EOL: CRLF, Indent & Align: Space, Wrap: 80 columns
+'###############################################################################
+
+' Copyright 2020 Nathan Burnham
+
+' Licensed under the Apache License, Version 2.0 (the "License");
+' you may not use this file except in compliance with the License.
+' You may obtain a copy of the License at
+
+'   http://www.apache.org/licenses/LICENSE-2.0
+
+' Unless required by applicable law or agreed to in writing, software
+' distributed under the License is distributed on an "AS IS" BASIS,
+' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+' See the License for the specific language governing permissions and
+' limitations under the License.
+
+'###############################################################################
+
+{macro:rhlib_tt_frame}
+    (L.L.rhlib_tt_index)
+    (M.V.GetTTBusstopIndex) (S.L.rhlib_tt_index)
+    = ! (S.L.rhlib_tt_updated)
+
+    (L.L.rhlib_tt_active)
+    (L.L.rhlib_tt_index) 0 >= (S.L.rhlib_tt_active)
+    =
+    {if}
+        (L.L.rhlib_tt_updated) (S.L.rhlib_tt_advanced)
+        0 (S.L.rhlib_tt_started) (S.L.rhlib_tt_stopped)
+    {else}
+        0 (S.L.rhlib_tt_advanced)
+        (L.L.rhlib_tt_active) (S.L.rhlib_tt_started)
+        ! (S.L.rhlib_tt_stopped)
+    {endif}
+{end}

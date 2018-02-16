@@ -127,3 +127,30 @@ written to.
 
 `rhlib_time_pm`
 : 1 between noon (inclusive) and midnight (exclusive), 0 otherwise.
+
+### Timetable
+
+To use this module:
+
+- `rhlib_tt_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_tt_script.osc` must be listed under `[script]`.
+- `rhlib_tt_frame` must be called from both the `{frame}` and `{frame_ai}`
+  entrypoints (if the latter exists).
+
+The variables provided by this module should be considered constants and not be
+written to.
+
+`rhlib_tt_index`
+: The index of the current bus stop in the timetable. Same as the output of
+  `(M.V.GetTTBusstopIndex)`.
+
+`rhlib_tt_active`
+: 1 if there is an active timetable, 0 otherwise. This value should be the same
+  as, but is not set to, the value of `schedule_active`.
+
+`rhlib_tt_updated`, and `rhlib_tt_advanced`, `rhlib_tt_started` and
+`rhlib_tt_stopped`
+: `rhlib_tt_updated`, and one of `rhlib_tt_advanced`, `rhlib_tt_started` or
+  `rhlib_tt_stopped` are 1 during any frame in which the value of
+  `rhlib_tt_index` changed, with the latter indicating the nature of the change,
+  0 otherwise.
