@@ -69,3 +69,7 @@ written to.
 `rhlib_frameRate`
 : Approximated average framerate for the last 5 frames. Useful for disabling
   something computationally-intensive at low framerates.
+
+`rhlib_frameTime`
+: A sanitised clone of `Timegap` - cannot be higher than 0.1 seconds, preventing
+  runaway values at low framerates.

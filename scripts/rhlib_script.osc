@@ -31,5 +31,7 @@
 {end}
 
 {macro:rhlib_frame}
+    (L.S.TimeGap) 0.1 min (S.L.rhlib_frameTime)
+
     1 (L.S.TimeGap) / (L.L.rhlib_frameRate) 4 * + 5 / (S.L.rhlib_frameRate)
 {end}

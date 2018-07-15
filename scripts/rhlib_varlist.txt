@@ -1,1 +1,2 @@
+rhlib_frameTime
 rhlib_frameRate
