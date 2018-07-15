@@ -40,3 +40,13 @@ To use this module, `rhlib_register_stringvarlist.txt` must be listed under
 
 This module provides string variables `temp0` to `temp9`, to be used as string
 equivalents to the 10 float registers (`l0`-`l9`/`s0`-`s9`).
+
+### Infinity Constant
+
+To use this module, `rhlib_infinity_constfile.txt` must be listed under
+`[constfile]`.
+
+In OMSI Script dividing by 0 evaluates to 0 rather than infinity, undefined or
+an exception. This constant can be used in such situations where a value of
+infinity is desirable. This is achieved by trying to store a value of 4.0×10³⁸
+into a 32-bit float constant that can only handle up to ~3.4×10³⁸.
