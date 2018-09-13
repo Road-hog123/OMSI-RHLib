@@ -1,0 +1,14 @@
+rhlib_draw_index
+rhlib_draw_x
+rhlib_draw_y
+rhlib_draw_w
+rhlib_draw_h
+rhlib_draw_t
+rhlib_draw_font
+rhlib_draw_textLength
+rhlib_draw_useFontColor
+rhlib_draw_letterSpacing
+rhlib_draw_a
+rhlib_draw_r
+rhlib_draw_g
+rhlib_draw_b

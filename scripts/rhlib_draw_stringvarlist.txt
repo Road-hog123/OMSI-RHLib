@@ -1,0 +1,2 @@
+rhlib_draw_textureFileName
+rhlib_draw_text

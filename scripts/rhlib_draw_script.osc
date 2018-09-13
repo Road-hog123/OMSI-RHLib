@@ -1,0 +1,215 @@
+'###############################################################################
+' "Library" of useful re-usable macros for drawing to script textures
+
+' Version 0.1
+' Written from scratch with <3 by Road-hog123
+
+' For usage information, please see:
+'   https://github.com/Road-hog123/OMSI-RHLib/
+
+' Encoding: Windows-1252, EOL: CRLF, Indent & Align: Space, Wrap: 80 columns
+'###############################################################################
+
+' Copyright 2020 Nathan Burnham
+
+' Licensed under the Apache License, Version 2.0 (the "License");
+' you may not use this file except in compliance with the License.
+' You may obtain a copy of the License at
+
+'   http://www.apache.org/licenses/LICENSE-2.0
+
+' Unless required by applicable law or agreed to in writing, software
+' distributed under the License is distributed on an "AS IS" BASIS,
+' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+' See the License for the specific language governing permissions and
+' limitations under the License.
+
+'###############################################################################
+
+{macro:rhlib_draw_init}
+    (M.L.rhlib_draw_white)
+{end}
+
+{macro:rhlib_draw_pixel}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x)
+    (L.L.rhlib_draw_y)
+    (M.V.STDrawPixel)
+{end}
+
+{macro:rhlib_draw_line}
+    (L.L.rhlib_draw_w)
+    {if}
+        (L.L.rhlib_draw_index)
+        (L.L.rhlib_draw_x)
+        (L.L.rhlib_draw_y)
+        (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + 1 -
+        (L.L.rhlib_draw_y) (L.L.rhlib_draw_t) + 1 -
+        (M.V.STDrawRect)
+    {endif}
+
+    (L.L.rhlib_draw_h)
+    {if}
+        (L.L.rhlib_draw_index)
+        (L.L.rhlib_draw_x)
+        (L.L.rhlib_draw_y)
+        (L.L.rhlib_draw_x) (L.L.rhlib_draw_t) + 1 -
+        (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + 1 -
+        (M.V.STDrawRect)
+    {endif}
+{end}
+
+{macro:rhlib_draw_rect}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x)
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + 1 -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + 1 -
+    (M.V.STDrawRect)
+{end}
+
+{macro:rhlib_draw_border}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + (L.L.rhlib_draw_t) + 1 -
+    (L.L.rhlib_draw_y) 1 -
+    (M.V.STDrawRect)
+
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) +
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + (L.L.rhlib_draw_t) + 1 -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + (L.L.rhlib_draw_t) + 1 -
+    (M.V.STDrawRect)
+
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_x) 1 -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + 1 -
+    (M.V.STDrawRect)
+
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) +
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + (L.L.rhlib_draw_t) + 1 -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + 1 -
+    (M.V.STDrawRect)
+{end}
+
+{macro:rhlib_draw_rect_border}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_t) -
+    (L.L.rhlib_draw_x) (L.L.rhlib_draw_w) + (L.L.rhlib_draw_t) + 1 -
+    (L.L.rhlib_draw_y) (L.L.rhlib_draw_h) + (L.L.rhlib_draw_t) + 1 -
+    (M.V.STDrawRect)
+{end}
+
+{macro:rhlib_draw_leftText}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x)
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_font)
+    (L.L.rhlib_draw_useFontColor)
+    (L.L.rhlib_draw_letterSpacing)
+    (L.$.rhlib_draw_text)
+    (M.V.STTextOut)
+{end}
+
+{macro:rhlib_draw_rightText}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_w) (L.L.rhlib_draw_textLength) - 0 max
+    (L.L.rhlib_draw_x) +
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_font)
+    (L.L.rhlib_draw_useFontColor)
+    (L.L.rhlib_draw_letterSpacing)
+    (L.$.rhlib_draw_text)
+    (M.V.STTextOut)
+{end}
+
+{macro:rhlib_draw_centerText}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_w) (L.L.rhlib_draw_textLength) - 2 / trunc 0 max
+    (L.L.rhlib_draw_x) +
+    (L.L.rhlib_draw_y)
+    (L.L.rhlib_draw_font)
+    (L.L.rhlib_draw_useFontColor)
+    (L.L.rhlib_draw_letterSpacing)
+    (L.$.rhlib_draw_text)
+    (M.V.STTextOut)
+{end}
+
+{macro:rhlib_draw_textLength}
+    (L.L.rhlib_draw_font)
+    (L.$.rhlib_draw_text)
+    (M.V.TextLength)
+    (S.L.rhlib_draw_textLength)
+{end}
+
+{macro:rhlib_draw_readPixel}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_x)
+    (L.L.rhlib_draw_y)
+    (M.V.STReadPixel)
+{end}
+
+{macro:rhlib_draw_getColor}
+    (L.L.rhlib_draw_a) (L.L.rhlib_draw_index) (M.V.STGetA) (S.L.rhlib_draw_a) =
+    (L.L.rhlib_draw_r) (L.L.rhlib_draw_index) (M.V.STGetR) (S.L.rhlib_draw_r) =
+    (L.L.rhlib_draw_g) (L.L.rhlib_draw_index) (M.V.STGetG) (S.L.rhlib_draw_g) =
+    (L.L.rhlib_draw_b) (L.L.rhlib_draw_index) (M.V.STGetB) (S.L.rhlib_draw_b) =
+    + + +
+{end}
+
+{macro:rhlib_draw_setColor}
+    (L.L.rhlib_draw_index)
+    (L.L.rhlib_draw_a)
+    (L.L.rhlib_draw_r)
+    (L.L.rhlib_draw_g)
+    (L.L.rhlib_draw_b)
+    (M.V.STSetColor)
+{end}
+
+{macro:rhlib_draw_black}
+    0
+    (S.L.rhlib_draw_a)
+    (S.L.rhlib_draw_r)
+    (S.L.rhlib_draw_g)
+    (S.L.rhlib_draw_b)
+{end}
+
+{macro:rhlib_draw_white}
+    255
+    (S.L.rhlib_draw_a)
+    (S.L.rhlib_draw_r)
+    (S.L.rhlib_draw_g)
+    (S.L.rhlib_draw_b)
+{end}
+
+{macro:rhlib_draw_safeTextureLoad}
+    (L.$.rhlib_draw_textureFileName)
+    (M.L.rhlib_draw_unlock)
+    (L.L.rhlib_draw_index) (M.V.STLoadTex)
+    (M.L.rhlib_draw_lock)
+{end}
+
+{macro:rhlib_draw_clear}
+    (M.L.rhlib_draw_unlock)
+    (L.L.rhlib_draw_index) (M.V.STNewTex)
+    (M.L.rhlib_draw_lock)
+{end}
+
+{macro:rhlib_draw_generateMipmaps}
+    (L.L.rhlib_draw_index) (M.V.STFilter)
+{end}
+
+{macro:rhlib_draw_unlock}
+    (L.L.rhlib_draw_index) (M.V.STUnlock)
+{end}
+
+{macro:rhlib_draw_lock}
+    (L.L.rhlib_draw_index) (M.V.STLock)
+{end}

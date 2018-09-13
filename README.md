@@ -197,3 +197,79 @@ To use this module:
 
 `rhlib_aiState_updated`
 : 1 during any frame in which the value of `rhlib_aiState` changed, 0 otherwise.
+
+### Draw
+
+To use this module:
+
+- `rhlib_draw_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_draw_stringvarlist.txt` must be listed under `[stringvarnamelist]`.
+- `rhlib_draw_script.osc` must be listed under `[script]`.
+- `rhlib_draw_init` must be called from the `{init}` entrypoint.
+
+Using the system macros directly, values must be loaded into the stack ahead of
+every call, resulting in a lot of repetition. This module's macros allow you to
+set a variable only when its value needs to change, improving readability.
+
+`rhlib_draw_lock`
+: Locks the script texture, ready for drawing.
+
+`rhlib_draw_unlock`
+: Unlocks the script texture, ready for display.
+
+`rhlib_draw_clear`
+: Unlocks, Resets, and Locks the script texture.
+
+`rhlib_draw_safeTextureLoad`
+: Unlocks, Loads a texture into, and Locks the script texture.
+
+`rhlib_draw_generateMipmaps`
+: Generates mipmaps for the script texture.
+
+`rhlib_draw_black`
+: Sets the color variables to 0.
+
+`rhlib_draw_white`
+: Sets the color variables to 255.
+
+`rhlib_draw_setColor`
+: Sets the drawing color from the color variables.
+
+`rhlib_draw_getColor`
+: Reads the drawing color into the color variables. Additionally returns 1 if
+  the variables were not changed, 0 otherwise.
+
+`rhlib_draw_readPixel`
+: Sets the drawing color to that of a pixel.
+
+`rhlib_draw_pixel`
+: Draws a single pixel.
+
+`rhlib_draw_line`
+: If `w` is non-zero, draws a rectangle of width `w` and height `t`.
+  If `h` is non-zero, draws a rectangle of width `t` and height `h`.
+
+`rhlib_draw_rect`
+: Draws a rectangle of width `w` and height `h`.
+
+`rhlib_draw_border`
+: Draws a border of thickness `t` around a rectangle of width `w` and height
+  `h`. Four rectangles are drawn to achieve this without overwriting the central
+  rectangle.
+
+`rhlib_draw_rect_border`
+: Draws a rectangle the same size as the outside of `rhlib_draw_border`. Can be
+  followed by `rhlib_draw_rect` with the same parameters but a different drawing
+  color to create a rectangle with border.
+
+`rhlib_draw_textLength`
+: Sets `textLength` to and returns the length of the text in the current font.
+
+`rhlib_draw_leftText`
+: Draws left-aligned text.
+
+`rhlib_draw_rightText`
+: Draws right-aligned text. Requires `w` and `textLength` to be set.
+
+`rhlib_draw_centerText`
+: Draws center-aligned text. Requires `w` and `textLength` to be set.
