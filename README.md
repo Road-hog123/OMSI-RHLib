@@ -178,3 +178,22 @@ written to.
 `rhlib_delay_direction`, `rhlib_delay_minute` and `rhlib_delay_second`
 : The +/- indicator, minutes and seconds components of a digital clock display
   for the timetable delay.
+
+### AI State
+
+To use this module:
+
+- `rhlib_aiState_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_aiState_script.osc` must be listed under `[script]`.
+- `rhlib_aiState_init` must be called from the `{init}` entrypoint.
+- `rhlib_aiState_frame` must be called from the `{frame}` entrypoint.
+- `rhlib_aiState_frame_ai` must be called from the `{frame_ai}` entrypoint (if
+  one exists).
+
+`rhlib_aiState`
+: 0 when the player is driving their bus, 1 when the AI is driving the player's
+  bus and 2 when the AI is driving an AI bus. If there is no `{frame_ai}`
+  entrypoint, the value will never be 2.
+
+`rhlib_aiState_updated`
+: 1 during any frame in which the value of `rhlib_aiState` changed, 0 otherwise.
