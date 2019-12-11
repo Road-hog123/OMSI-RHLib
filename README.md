@@ -82,6 +82,17 @@ written to.
 
 #### Macros
 
+`rhlib_roundNearest`
+: Rounds the top float stack value to the nearest integer value.
+
+`rhlib_roundPositive`
+: Rounds the top float stack value to the nearest integer value, always rounding
+  up (towards positive infinity).
+
+`rhlib_roundNegative`
+: Rounds the top float stack value to the nearest integer value, always rounding
+  down (towards negative infinity).
+
 `rhlib_exponential`
 : Approaches a target value approximately exponentially. Functionally identical
   to the `traegheit` macros found in the default SD/D cockpit and door scripts,

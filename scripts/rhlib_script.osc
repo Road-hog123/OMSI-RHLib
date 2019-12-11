@@ -41,3 +41,15 @@
     l0 l1 > {if} l2 {else} l3 {endif}
     (L.S.Timegap) * 1 min -1 max l0 l1 - * l1 + s1
 {end}
+
+{macro:rhlib_roundPositive}
+    d 1 % sgn 0 > + trunc
+{end}
+
+{macro:rhlib_roundNegative}
+    d 1 % sgn 0 < - trunc
+{end}
+
+{macro:rhlib_roundNearest}
+    d sgn 0.5 * + trunc
+{end}
