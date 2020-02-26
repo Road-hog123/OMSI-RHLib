@@ -100,3 +100,30 @@ written to.
   Register 0 should contain the target, register 1 the current value, register 2
   the positive approach constant and register 3 the negative approach constant.
   After execution, register 1 contains the new value.
+
+### Time
+
+To use this module:
+
+- `rhlib_time_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_time_script.osc` must be listed under `[script]`.
+- `rhlib_time_frame` must be called from both the `{frame}` and `{frame_ai}`
+  entrypoints (if the latter exists).
+
+The variables provided by this module should be considered constants and not be
+written to.
+
+`rhlib_time`
+: The number of whole seconds since midnight (integer version of system variable
+  `Time`).
+
+`rhlib_time_updated`
+: 1 during any frame in which the value of `rhlib_time` changed, 0 otherwise.
+
+`rhlib_time_hour12`, `rhlib_time_hour24`, `rhlib_time_minute` and
+`rhlib_time_second`
+: The hours, minutes and seconds components of a 12 or 24-hour digital clock
+  display.
+
+`rhlib_time_pm`
+: 1 between noon (inclusive) and midnight (exclusive), 0 otherwise.
