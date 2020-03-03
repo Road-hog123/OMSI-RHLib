@@ -79,3 +79,13 @@ written to.
   `Time` or `GetTime`, this variable does not jump or reset. Also saves
   incrementing or decrementing numerous variables across different scripts by
   `Timegap` each frame.
+
+#### Macros
+
+`rhlib_exponential`
+: Approaches a target value approximately exponentially. Functionally identical
+  to the `traegheit` macros found in the default SD/D cockpit and door scripts,
+  and to the `engine_traegheit` macro found in the default NL/NG engine scripts.
+  Register 0 should contain the target, register 1 the current value, register 2
+  the positive approach constant and register 3 the negative approach constant.
+  After execution, register 1 contains the new value.

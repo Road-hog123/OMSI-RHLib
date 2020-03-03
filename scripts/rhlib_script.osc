@@ -36,3 +36,8 @@
 
     1 (L.S.TimeGap) / (L.L.rhlib_frameRate) 4 * + 5 / (S.L.rhlib_frameRate)
 {end}
+
+{macro:rhlib_exponential}
+    l0 l1 > {if} l2 {else} l3 {endif}
+    (L.S.Timegap) * 1 min -1 max l0 l1 - * l1 + s1
+{end}
