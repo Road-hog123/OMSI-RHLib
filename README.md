@@ -50,3 +50,22 @@ In OMSI Script dividing by 0 evaluates to 0 rather than infinity, undefined or
 an exception. This constant can be used in such situations where a value of
 infinity is desirable. This is achieved by trying to store a value of 4.0×10³⁸
 into a 32-bit float constant that can only handle up to ~3.4×10³⁸.
+
+### Core
+
+To use this module:
+
+- `rhlib_varlist.txt` must be listed under `[varnamelist]`.
+- `rhlib_script.osc` must be listed under `[script]`.
+- `rhlib_init` must be called from the `{init}` entrypoint.
+- `rhlib_frame` must be called from both the `{frame}` and `{frame_ai}`
+  entrypoints (if the latter exists).
+
+The variables provided by this module should be considered constants and not be
+written to.
+
+#### Variables
+
+`rhlib_frameRate`
+: Approximated average framerate for the last 5 frames. Useful for disabling
+  something computationally-intensive at low framerates.
