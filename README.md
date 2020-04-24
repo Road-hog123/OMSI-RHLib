@@ -73,3 +73,9 @@ written to.
 `rhlib_frameTime`
 : A sanitised clone of `Timegap` - cannot be higher than 0.1 seconds, preventing
   runaway values at low framerates.
+
+`rhlib_runTime`
+: Cumulative duration of all frames this script has experienced so far. Unlike
+  `Time` or `GetTime`, this variable does not jump or reset. Also saves
+  incrementing or decrementing numerous variables across different scripts by
+  `Timegap` each frame.
