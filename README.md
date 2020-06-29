@@ -32,3 +32,11 @@ so the RHLib script files should generally come last under `[script]`. Equally,
 the calls to RHLib init and frame macros should occur early, so that variables
 are set before any scripts try to access them - this also applies to RHLib
 modules that access variables from another module.
+
+### String Registers
+
+To use this module, `rhlib_register_stringvarlist.txt` must be listed under
+`[stringvarnamelist]`.
+
+This module provides string variables `temp0` to `temp9`, to be used as string
+equivalents to the 10 float registers (`l0`-`l9`/`s0`-`s9`).
