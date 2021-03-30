@@ -22,6 +22,12 @@ details of the license available in either LICENSE.txt or
   notice and license boiler plate at the top of the files, as well as stating
   what changes have been made.
 
+## Changelog
+
+### 1.0
+
+Initial Release.
+
 ## Usage Information
 
 The library is divided into several modules such that only the required
